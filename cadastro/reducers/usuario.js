@@ -19,6 +19,10 @@ export default function peopleReducer(state = initialState, action) {
         };
       }
       return state;
+    case LOGOUT:
+      return {
+        usuarioLogado: false
+      }
     default:
       return state;
   }

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { logout } from '../../../actions';
 import {
 StyleSheet,
 Text,
@@ -7,11 +9,16 @@ Image,
 TouchableHighlight
 } from 'react-native';
 
-export default class Home extends Component{
+class Home extends Component{
 
     static navigationOptions = ({navigation}) => ({
         title:'Home'
     });
+
+    logoutUsuario = () => {
+        this.props.dispatchLogout()
+        this.props.navigation.navigate('Login')
+    }
 
     render() {
         return (
@@ -31,7 +38,11 @@ export default class Home extends Component{
                 onPress={() => this.props.navigation.navigate('AvaliarTrabalho')} >
                 <Image source={require('./icons/evaluarion.png')} style={styles.icon} />
             </TouchableHighlight>
-            <Image source={require('./icons/exit.png')} style={styles.icon} />
+            <TouchableHighlight
+                underlayColor="white"                
+                onPress={this.logoutUsuario} >
+                <Image source={require('./icons/exit.png')} style={styles.icon} />
+            </TouchableHighlight>
         </View>
         );
     }
@@ -69,3 +80,13 @@ const styles = StyleSheet.create({
         marginRight: 25,
       }
   });
+
+  function mapDispatchToProps (dispatch) {
+    return {
+        dispatchLogout: () => dispatch(logout()),
+    }
+  }
+  
+  export default connect(
+    mapDispatchToProps,
+  )(Home)

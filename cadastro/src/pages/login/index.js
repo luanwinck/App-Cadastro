@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../../actions';
 
+import PasswordInputText from 'react-native-hide-show-password-input';
 import {
   StyleSheet,
   Text,
@@ -53,11 +54,9 @@ class Login extends Component{
           value={this.state.email}
           placeholder="Email"
         />
-        <TextInput
-          onChangeText={text => this.updateInputSenha(text)}
-          style={styles.input}
-          value={this.state.senha}
-          placeholder="Senha"
+        <PasswordInputText
+            onChangeText={text => this.updateInputSenha(text)}
+            value={this.state.senha}
         />
         <TouchableHighlight
           underlayColor="#ffa012"
