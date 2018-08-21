@@ -12,12 +12,13 @@ import {
 import Home from './src/pages/home/index'
 import CadastroAluno from './src/pages/cadastroAluno/index'
 import CadastroTrabalho from './src/pages/cadastroTrabalho/index'
-
+import AvaliarTrabalho from './src/pages/avaliarTrabalho/index'
 
 const Navegation = StackNavigator({
   Home: { screen: Home },
   CadastroAluno: { screen: CadastroAluno },
   CadastroTrabalho: { screen: CadastroTrabalho },
+  AvaliarTrabalho: { screen: AvaliarTrabalho },
 });
 
 export default class App extends React.Component {

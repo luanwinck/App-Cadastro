@@ -1,4 +1,4 @@
-import { ADD_PERSON, DELETE_PERSON, ADD_WORK, DELETE_WORK } from './constants';
+import { ADD_PERSON, DELETE_PERSON, ADD_WORK, DELETE_WORK, ADD_AVALIACAO, DELETE_AVALIACAO, } from './constants';
 
 export function addPerson(person) {
   return {
@@ -25,5 +25,19 @@ export function deleteWork(work) {
   return {
     type: DELETE_WORK,
     work,
+  };
+}
+
+export function addAvaliacao(avaliacao) {
+  return {
+    type: ADD_AVALIACAO,
+    avaliacao,
+  };
+}
+
+export function deleteAvaliacao(avaliacao) {
+  return {
+    type: DELETE_AVALIACAO,
+    avaliacao,
   };
 }

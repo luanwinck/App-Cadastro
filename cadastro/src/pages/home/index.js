@@ -3,7 +3,7 @@ import {
 StyleSheet,
 Text,
 View,
-Button,
+Image,
 TouchableHighlight
 } from 'react-native';
 
@@ -17,23 +17,21 @@ export default class Home extends Component{
         return (
         <View style={styles.container}>
             <TouchableHighlight
-                underlayColor="#ffa012"
-                style={styles.button}
+                underlayColor="white"
                 onPress={() => this.props.navigation.navigate('CadastroAluno')} >
-                <Text style={styles.buttonText}>Cadatro de alunos</Text>
+                <Image source={require('./icons/user.png')} style={styles.icon} />
             </TouchableHighlight>
             <TouchableHighlight
-                underlayColor="#ffa012"
-                style={styles.button}
+                underlayColor="white"
                 onPress={() => this.props.navigation.navigate('CadastroTrabalho')} >
-                <Text style={styles.buttonText}>Cadatro de trabalhos</Text>
+                <Image source={require('./icons/file.png')} style={styles.icon} />
             </TouchableHighlight>
             <TouchableHighlight
-                underlayColor="#ffa012"
-                style={styles.button}
-                onPress={() => this.props.navigation.navigate('CadastroAluno')} >
-                <Text style={styles.buttonText}>Avaliar trabalhos</Text>
+                underlayColor="white"                
+                onPress={() => this.props.navigation.navigate('AvaliarTrabalho')} >
+                <Image source={require('./icons/evaluarion.png')} style={styles.icon} />
             </TouchableHighlight>
+            <Image source={require('./icons/exit.png')} style={styles.icon} />
         </View>
         );
     }
@@ -42,6 +40,8 @@ export default class Home extends Component{
 const styles = StyleSheet.create({
     container: {
       flex: 1,
+      flexDirection: 'row',
+      flexWrap: 'wrap',
       padding: 20,
       backgroundColor: '#F5FCFF',
     },
@@ -61,4 +61,11 @@ const styles = StyleSheet.create({
       buttonText: {
         color: 'white',
       },
+      icon: {
+        width: 160, 
+        height: 160,
+        marginTop: 30,
+        marginBottom: 30,
+        marginRight: 25,
+      }
   });
