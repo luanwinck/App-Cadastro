@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addPerson, deletePerson } from '../../../actions';
+import { addWork, deleteWork } from '../../../actions';
 
 import {
   StyleSheet,
@@ -10,24 +10,24 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-class CadastroAluno extends Component{
+class CadastroTrabalho extends Component{
 
     static navigationOptions = ({navigation}) => ({
-      title:'Cadastro de alunos'
+      title:'Cadastro de trabalho'
     });
 
     state = {
       inputValue: '',
     }
-    addPerson = () => {
+    addWork = () => {
       if (this.state.inputValue === '') return;
-      this.props.dispatchAddPerson({
+      this.props.dispatchAddWork({
         name: this.state.inputValue,
       });
       this.setState({ inputValue: '' });
     }
-    deletePerson = (person) => {
-      this.props.dispatchdeletePerson(person)
+    deleteWork = (Work) => {
+      this.props.dispatchdeleteWork(Work)
     }
     updateInput = (inputValue) => {
       this.setState({ inputValue })
@@ -45,15 +45,15 @@ class CadastroAluno extends Component{
         <TouchableHighlight
           underlayColor="#ffa012"
           style={styles.button}
-          onPress={this.addPerson}
+          onPress={this.addWork}
         >
-          <Text style={styles.buttonText}>Adicionar aluno</Text>
+          <Text style={styles.buttonText}>Adicionar trabalho</Text>
         </TouchableHighlight>
         {
-          this.props.people.map((person, index) => (
-            <View key={index} style={styles.person}>
-              <Text>Name: {person.name}</Text>
-              <Text style={styles.buttonExcluir} onPress={() => this.deletePerson(person)}>Excluir</Text>
+          this.props.work.map((work, index) => (
+            <View key={index} style={styles.work}>
+              <Text>Name: {work.name}</Text>
+              <Text style={styles.buttonExcluir} onPress={() => this.deleteWork(work)}>Excluir</Text>
             </View>
           ))
         }
@@ -89,29 +89,29 @@ class CadastroAluno extends Component{
     buttonText: {
       color: 'white',
     },
-    person: {
+    work: {
       marginTop: 12,
     },
     buttonExcluir: {
-      color: 'red'
+        color: 'red'
     }
   });
   
   function mapStateToProps (state) {
     return {
-      people: state.people.people
+        work: state.work.work
     }
   }
   
   function mapDispatchToProps (dispatch) {
     return {
-      dispatchAddPerson: (person) => dispatch(addPerson(person)),
-      dispatchdeletePerson: (person) => dispatch(deletePerson(person))
+      dispatchAddWork: (work) => dispatch(addWork(work)),
+      dispatchdeleteWork: (work) => dispatch(deleteWork(work))
     }
   }
   
   export default connect(
     mapStateToProps,
     mapDispatchToProps,
-  )(CadastroAluno)
+  )(CadastroTrabalho)
   

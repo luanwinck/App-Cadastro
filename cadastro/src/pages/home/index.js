@@ -3,7 +3,8 @@ import {
 StyleSheet,
 Text,
 View,
-Button
+Button,
+TouchableHighlight
 } from 'react-native';
 
 export default class Home extends Component{
@@ -15,8 +16,24 @@ export default class Home extends Component{
     render() {
         return (
         <View style={styles.container}>
-            <Text>Tela inicial</Text>
-            <Button title="Tela 2" onPress={() => this.props.navigation.navigate('CadastroAluno')} />
+            <TouchableHighlight
+                underlayColor="#ffa012"
+                style={styles.button}
+                onPress={() => this.props.navigation.navigate('CadastroAluno')} >
+                <Text style={styles.buttonText}>Cadatro de alunos</Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+                underlayColor="#ffa012"
+                style={styles.button}
+                onPress={() => this.props.navigation.navigate('CadastroTrabalho')} >
+                <Text style={styles.buttonText}>Cadatro de trabalhos</Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+                underlayColor="#ffa012"
+                style={styles.button}
+                onPress={() => this.props.navigation.navigate('CadastroAluno')} >
+                <Text style={styles.buttonText}>Avaliar trabalhos</Text>
+            </TouchableHighlight>
         </View>
         );
     }
@@ -25,8 +42,7 @@ export default class Home extends Component{
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      // justifyContent: 'center',
-      alignItems: 'center',
+      padding: 20,
       backgroundColor: '#F5FCFF',
     },
     welcome: {
@@ -34,9 +50,15 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       margin: 10,
     },
-    instructions: {
-      textAlign: 'center',
-      color: '#333333',
-      marginBottom: 5,
-    },
+    button: {
+        backgroundColor: '#ff9900',
+        height: 60,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 12,
+        borderRadius: 3,
+      },
+      buttonText: {
+        color: 'white',
+      },
   });
