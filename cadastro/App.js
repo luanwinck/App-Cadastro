@@ -18,6 +18,10 @@ const Navegation = StackNavigator({
   CadastroAluno: { screen: CadastroAluno },
 });
 
-export default Navegation;
+export default class App extends React.Component {
+  render() {
+    return <Navegation />;
+  }
+}
 
 
