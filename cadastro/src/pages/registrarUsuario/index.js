@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../../actions';
+import { addUsuario } from '../../../actions';
 
 import PasswordInputText from 'react-native-hide-show-password-input';
 import {
@@ -11,25 +11,31 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-class Login extends Component{
+class RegistrarUsuario extends Component{
 
     static navigationOptions = ({navigation}) => ({
       title:'Controle de notas'
     });
 
     state = {
+      nome: '',
       email: '',
       senha: ''
     }
 
-    login = () => {
-      if (this.state.email === '' || this.state.senha === '') return;
-      this.props.dispatchLogin({
+    registrar = () => {
+      if (this.state.nome === '' || this.state.email === '' || this.state.senha === '') return;
+      this.props.dispatchAddUsuario({
+        nome: this.state.nome,
         email: this.state.email,
         senha: this.state.senha
       });
-      this.setState({ email: '', senha: '' });
+      this.setState({ nome: '', email: '', senha: '' });
     }
+
+    updateInputNome = (nome) => {
+        this.setState({ nome })
+      }
 
     updateInputEmail = (email) => {
       this.setState({ email })
@@ -49,6 +55,12 @@ class Login extends Component{
     return (
       <View style={styles.container}>
         <TextInput
+            onChangeText={text => this.updateInputNome(text)}
+            style={styles.input}
+            value={this.state.nome}
+            placeholder="Nome"
+        />
+        <TextInput
           onChangeText={text => this.updateInputEmail(text)}
           style={styles.input}
           value={this.state.email}
@@ -61,12 +73,11 @@ class Login extends Component{
         <TouchableHighlight
           underlayColor="#ffa012"
           style={styles.button}
-          onPress={this.login}
+          onPress={this.registrar}
         >
-          <Text style={styles.buttonText}>Login</Text>
+          <Text style={styles.buttonText}>Registrar-se</Text>
         </TouchableHighlight>
-        <Text style={styles.buttonTextSecondary} onPress={() => this.props.navigation.navigate('RegistrarUsuario')}>Cadastrar-se</Text>
-        {this.verificaUsuarioLogado()}
+        <Text style={styles.buttonTextSecondary} onPress={() => this.props.navigation.navigate('Login')}>Tela de login</Text>
       </View>
       )
     }
@@ -112,21 +123,14 @@ class Login extends Component{
     }
   });
   
-  function mapStateToProps (state) {
-    return {
-      usuario: state.usuario.usuario,
-      usuarioLogado: state.usuario.usuarioLogado
-    }
-  }
-  
   function mapDispatchToProps (dispatch) {
     return {
-        dispatchLogin: (usuario) => dispatch(login(usuario)),
+        dispatchAddUsuario: (usuario) => dispatch(addUsuario(usuario)),
     }
   }
   
   export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps,
-  )(Login)
+  )(RegistrarUsuario)
   
