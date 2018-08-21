@@ -98,6 +98,7 @@ class Login extends Component{
     },
     buttonText: {
       color: 'white',
+      fontSize: 22,
     },
     person: {
       marginTop: 12,
