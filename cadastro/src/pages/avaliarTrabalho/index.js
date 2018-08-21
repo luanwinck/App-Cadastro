@@ -56,14 +56,16 @@ class AvaliarTrabalho extends Component{
     }
 
     renderAvalicoes() {
-        return this.props.avaliacao.map((avaliacao, index) => (
+      return <ScrollView style={styles.containerScroll}>
+          {this.props.avaliacao.map((avaliacao, index) => (
             <View key={index} style={styles.person}>
               <Text>Aluno: {avaliacao.aluno}</Text>
               <Text>Trabalho: {avaliacao.trabalho}</Text>
               <Text>Nota: {avaliacao.nota}</Text>
               <Text style={styles.buttonExcluir} onPress={() => this.deleteAvaliacao(avaliacao)}>Excluir</Text>
             </View>
-          ))
+          ))}
+        </ScrollView>
     }
 
     render() {
@@ -97,9 +99,7 @@ class AvaliarTrabalho extends Component{
         >
           <Text style={styles.buttonText}>Avaliar</Text>
         </TouchableHighlight>
-        <ScrollView>
         { this.renderAvalicoes() }
-        </ScrollView>
       </View>
       )
     }
@@ -137,6 +137,10 @@ class AvaliarTrabalho extends Component{
     },
     buttonExcluir: {
       color: 'red'
+    },
+    containerScroll: {
+      marginTop: 10,
+      height: 400
     }
   });
   

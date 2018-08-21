@@ -1,6 +1,6 @@
 import { ADD_WORK, DELETE_WORK } from '../constants';
 
-const initialState = { work: [{ name: 'Trabalho de física' }] }
+const initialState = { work: [{ name: 'Autoria e design II' },{ name: 'Estrutura de dados' },{ name: 'Porgramação I' }] }
 
 export default function peopleReducer(state = initialState, action) {
   switch (action.type) {

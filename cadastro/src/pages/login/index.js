@@ -65,6 +65,7 @@ class Login extends Component{
         >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableHighlight>
+        <Text style={styles.buttonTextSecondary}>Cadastrar-se</Text>
         {this.verificaUsuarioLogado()}
       </View>
       )
@@ -103,6 +104,11 @@ class Login extends Component{
     },
     buttonExcluir: {
       color: 'red'
+    },
+    buttonTextSecondary: {
+        marginTop: 20,
+        textAlign: 'center',
+        fontSize: 20
     }
   });
   

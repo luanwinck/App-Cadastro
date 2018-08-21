@@ -1,6 +1,6 @@
 import { ADD_PERSON, DELETE_PERSON } from '../constants';
 
-const initialState = { people: [{ name: 'Chris' }] }
+const initialState = { people: [{ name: 'Chris' },{ name: 'Roberto' },{ name: 'Antonio' },{ name: 'Carlos Alberto' },{ name: 'Mateus' }] }
 
 export default function peopleReducer(state = initialState, action) {
   switch (action.type) {

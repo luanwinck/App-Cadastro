@@ -8,6 +8,7 @@ import {
   View,
   TextInput,
   TouchableHighlight,
+  ScrollView
 } from 'react-native';
 
 class CadastroAluno extends Component{
@@ -33,6 +34,17 @@ class CadastroAluno extends Component{
       this.setState({ inputValue })
     }
 
+    renderAlunos() {
+      return <ScrollView style={styles.containerScroll}>
+          {this.props.people.map((person, index) => (
+            <View key={index} style={styles.person}>
+              <Text>Name: {person.name}</Text>
+              <Text style={styles.buttonExcluir} onPress={() => this.deletePerson(person)}>Excluir</Text>
+            </View>
+          ))}
+        </ScrollView>
+  }
+
     render() {
     return (
       <View style={styles.container}>
@@ -49,14 +61,7 @@ class CadastroAluno extends Component{
         >
           <Text style={styles.buttonText}>Adicionar aluno</Text>
         </TouchableHighlight>
-        {
-          this.props.people.map((person, index) => (
-            <View key={index} style={styles.person}>
-              <Text>Name: {person.name}</Text>
-              <Text style={styles.buttonExcluir} onPress={() => this.deletePerson(person)}>Excluir</Text>
-            </View>
-          ))
-        }
+        { this.renderAlunos() }
       </View>
       )
     }
@@ -94,6 +99,10 @@ class CadastroAluno extends Component{
     },
     buttonExcluir: {
       color: 'red'
+    },
+    containerScroll: {
+      marginTop: 10,
+      height: 400
     }
   });
   
