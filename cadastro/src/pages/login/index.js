@@ -40,7 +40,7 @@ class Login extends Component{
     }
 
     verificaUsuarioLogado() {
-        if (!!this.props.usuarioLogado) {
+        if (this.props.usuarioLogado.nome !== '') {
             this.props.navigation.navigate('Home')
         }
     }
