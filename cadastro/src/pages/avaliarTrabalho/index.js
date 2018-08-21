@@ -73,14 +73,14 @@ class AvaliarTrabalho extends Component{
       <View style={styles.container}>
         <Picker
             selectedValue={this.state.aluno}
-            style={{ height: 50, width: 100 }}
+            style={{ height: 50, width: 250 }}
             onValueChange={(itemValue, itemIndex) => this.setState({aluno: itemValue})}>
             <Picker.Item label="Escolher aluno" value='' />
             {this.renderAlunos()}
         </Picker>
         <Picker
             selectedValue={this.state.trabalho}
-            style={{ height: 50, width: 100 }}
+            style={{ height: 50, width: 250 }}
             onValueChange={(itemValue, itemIndex) => this.setState({trabalho: itemValue})}>
             <Picker.Item label="Escolher trabalho" value='' />
             {this.renderTrabalhos()}
