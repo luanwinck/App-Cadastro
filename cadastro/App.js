@@ -18,8 +18,8 @@ import AvaliarTrabalho from './src/pages/avaliarTrabalho/index'
 
 const Navegation = StackNavigator({
   Login: { screen: Login },
-  RegistrarUsuario: { screen: RegistrarUsuario },
   Home: { screen: Home },
+  RegistrarUsuario: { screen: RegistrarUsuario },
   CadastroAluno: { screen: CadastroAluno },
   CadastroTrabalho: { screen: CadastroTrabalho },
   AvaliarTrabalho: { screen: AvaliarTrabalho },

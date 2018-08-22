@@ -46,6 +46,7 @@ class Login extends Component{
     }
 
     render() {
+      console.log("teste debug")
     return (
       <View style={styles.container}>
         <TextInput

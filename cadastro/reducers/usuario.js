@@ -1,7 +1,7 @@
 import { ADD_USUARIO, LOGIN, LOGOUT } from '../constants';
 
 const initialState = { 
-    usuario: [{ nome: 'Luan', email: 'luan@gmail.com', senha: '123123' }],
+    usuario: [{ nome: 'Luan', email: 'a', senha: 'a' }],
     usuarioLogado: false
 }
 
