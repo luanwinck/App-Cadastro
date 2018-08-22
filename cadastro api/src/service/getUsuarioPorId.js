@@ -1,4 +1,4 @@
-import Usuario from "../dominio/usuario";
+const Usuario = require("../dominio/usuario");
 
 let usuario1 = new Usuario("fulano")
 let usuario2 = new Usuario("fulano2")
@@ -9,6 +9,6 @@ usuarios.push(usuario1)
 usuarios.push(usuario2)
 usuarios.push(usuario3)
 
-export default function getUsuario(nome) {
-    return usuarios.filter(u => u.nome === nome)
+module.exports = function getUsuario(nome) {
+    return usuarios.filter(u => u._nome === nome)
 }

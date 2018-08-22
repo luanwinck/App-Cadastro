@@ -4,8 +4,10 @@ const router = express.Router();
 //Rotas
 const index = require('./routes/index');
 const personRoute = require('./routes/personRoute');
+const usuarioRoute = require('./routes/usuarioRoute');
 app.use('/', index);
 app.use('/persons', personRoute);
+app.use('/usuario', usuarioRoute);
 module.exports = app;
 
 // var express = require('express');

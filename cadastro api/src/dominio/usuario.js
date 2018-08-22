@@ -1,4 +1,4 @@
-export default class Usuario{
+module.exports = class Usuario{
 
     constructor(nome){
         this._nome = nome
