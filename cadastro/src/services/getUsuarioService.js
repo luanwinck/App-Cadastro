@@ -7,4 +7,10 @@ export default class GetUsuarioService {
             method: 'get'
         })
     }
+
+    static getUsuarioPorNome(nome) {
+        return fetch(`${CONFIG.API_URL_BASE}/usuario/${nome}`, {
+            method: 'get'
+        })
+    }
 }

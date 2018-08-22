@@ -20,12 +20,13 @@ class RequisicaoUsuario extends Component{
       this.state = {
         nome: '',
         title: '',
-        text: ''
+        text: '',
+        usuarios: []
       }
     }
 
     componentWillMount() {
-        this.getUsuario()
+        // this.getUsuario()
     }
 
     getUsuario() {   
@@ -45,20 +46,39 @@ class RequisicaoUsuario extends Component{
             })
     }
 
+    getUsuarioPorNome = () => { 
+      const nome = this.state.nome
+      if (nome === '') return
+      GetUsuario
+          .getUsuarioPorNome(nome)
+          .then(response => response.json())
+          .then(response => {
+              console.log(response);
+              this.setState({
+                usuarios: response
+              })
+
+          })
+          .catch(function(err) { 
+              console.error(err); 
+          })
+    }
+
     static navigationOptions = ({navigation}) => ({
       title:'Requisição'
     });
 
-    registrar = () => {
-      if (this.state.nome === '') return;
-      this.props.dispatchAddUsuario({
-        nome: this.state.nome,
-      });
-      this.setState({ nome: '', email: '', senha: '' });
-    }
-
     updateInputNome = (nome) => {
       this.setState({ nome })
+    }
+
+    renderUsuarios() {
+      let usuarios = this.state.usuarios
+      return usuarios.length > 0 ?
+        usuarios.map(u => {
+          return <Text>{u._nome}</Text>
+        }) :
+        <Text>Nenhum usuario</Text>
     }
 
     render() {
@@ -73,12 +93,13 @@ class RequisicaoUsuario extends Component{
         <TouchableHighlight
           underlayColor="#ffa012"
           style={styles.button}
-          onPress={this.registrar}
+          onPress={this.getUsuarioPorNome}
         >
           <Text style={styles.buttonText}>Buscar</Text>
         </TouchableHighlight>
         <Text>{this.state.title}</Text>
         <Text>{this.state.text}</Text>
+        {this.renderUsuarios()}
       </View>
       )
     }

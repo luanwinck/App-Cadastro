@@ -10,5 +10,5 @@ usuarios.push(usuario2)
 usuarios.push(usuario3)
 
 module.exports = function getUsuario(nome) {
-    return usuarios.filter(u => u._nome === nome)
+    return usuarios.filter(u => u._nome.toLowerCase().indexOf(nome.toLowerCase()) !== -1)
 }
