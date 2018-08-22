@@ -52,6 +52,7 @@ class Home extends Component{
     render() {
         return (
         <View style={styles.container}>
+            <Text style={{fontSize: 22, width: 400}}>{`Bem vindo, ${this.props.usuarioLogado.nome}`}</Text>
             <TouchableHighlight
                 underlayColor="white"
                 onPress={() => this.props.navigation.navigate('CadastroAluno')} >
@@ -110,6 +111,12 @@ const styles = StyleSheet.create({
       }
   });
 
+  function mapStateToProps (state) {
+    return {
+        usuarioLogado: state.usuarioLogado.usuarioLogado
+    }
+  }
+
   function mapDispatchToProps (dispatch) {
     return {
         dispatchLogout: () => dispatch(logout()),
@@ -117,7 +124,7 @@ const styles = StyleSheet.create({
   }
   
   export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps,
   )(Home)
 

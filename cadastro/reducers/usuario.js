@@ -10,18 +10,20 @@ export default function peopleReducer(state = initialState, action) {
     case ADD_USUARIO:
       return {
         usuario: [...state.usuario, action.usuario],
+        usuarioLogado: { nome: '', email: '', senha: '' }
       };
     case LOGIN:
-      if (!!state.usuario.find(u => u.email === action.usuario.email && u.senha === action.usuario.senha)) {
+      const usuarioLogado = state.usuario.find(u => u.email === action.usuario.email && u.senha === action.usuario.senha)
+      if (!!usuarioLogado) {
         return {
             usuario: [...state.usuario],
-            usuarioLogado: true
+            usuarioLogado
         };
       }
       return state;
     case LOGOUT:
       return {
-        usuarioLogado: false
+        usuarioLogado: { nome: '', email: '', senha: '' }
       }
     default:
       return state;
