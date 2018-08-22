@@ -9,8 +9,6 @@ Image,
 TouchableHighlight
 } from 'react-native';
 
-import GetUsuario from '../../services/getUsuarioService'
-
 class Home extends Component{
 
     constructor() {
@@ -19,25 +17,6 @@ class Home extends Component{
         this.state = {
             teste: ''
         }
-    }
-
-    componentWillMount() {
-        let teste = this.getUsuario()
-        this.setState({
-            teste
-        })
-    }
-
-    getUsuario() {   
-        GetUsuario
-            .getUsuario()
-            .then(response => response.json())
-            .then(response => {
-                console.log(response);
-            })
-            .catch(function(err) { 
-                console.error(err); 
-            })
     }
 
     static navigationOptions = ({navigation}) => ({
@@ -60,7 +39,7 @@ class Home extends Component{
             </TouchableHighlight>
             <TouchableHighlight
                 underlayColor="white"
-                onPress={() => this.props.navigation.navigate('CadastroTrabalho')} >
+                onPress={() => this.props.navigation.navigate('RequisicaoUsuario')} >
                 <Image source={require('./icons/file.png')} style={styles.icon} />
             </TouchableHighlight>
             <TouchableHighlight

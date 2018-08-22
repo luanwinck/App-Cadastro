@@ -2,7 +2,7 @@ import { ADD_USUARIO, LOGIN, LOGOUT } from '../constants';
 
 const initialState = { 
     usuario: [{ nome: 'Luan', email: 'a', senha: 'a' }],
-    usuarioLogado: false
+    usuarioLogado: { nome: '', email: '', senha: '' }
 }
 
 export default function peopleReducer(state = initialState, action) {
