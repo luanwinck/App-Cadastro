@@ -23,6 +23,7 @@ export default function peopleReducer(state = initialState, action) {
       return state;
     case LOGOUT:
       return {
+        usuario: [...state.usuario],
         usuarioLogado: { nome: '', email: '', senha: '' }
       }
     default:
