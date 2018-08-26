@@ -11,6 +11,14 @@ TouchableHighlight
 
 class Home extends Component{
 
+    constructor() {
+        super()
+
+        this.state = {
+            teste: ''
+        }
+    }
+
     static navigationOptions = ({navigation}) => ({
         title:'Home'
     });
@@ -31,7 +39,7 @@ class Home extends Component{
             </TouchableHighlight>
             <TouchableHighlight
                 underlayColor="white"
-                onPress={() => this.props.navigation.navigate('CadastroTrabalho')} >
+                onPress={() => this.props.navigation.navigate('RequisicaoUsuario')} >
                 <Image source={require('./icons/file.png')} style={styles.icon} />
             </TouchableHighlight>
             <TouchableHighlight
@@ -98,3 +106,5 @@ const styles = StyleSheet.create({
     mapStateToProps,
     mapDispatchToProps,
   )(Home)
+
+
